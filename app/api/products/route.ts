@@ -14,7 +14,7 @@ export async function GET(request: Request) {
     const country = searchParams.get('country');
 
     const where: any = {
-      status: 'APPROVED', // На витрине только одобренные админом товары
+      status: 'APPROVED', // На витрине строго одобренные админом товары
     };
 
     if (category && category !== 'Все') {
@@ -75,7 +75,7 @@ export async function POST(request: Request) {
       },
     });
 
-    return NextResponse.json(newProduct, { status: 201 });
+    return NextResponse.json(newProduct, { status: 201 }); // Обрати внимание: фигурные скобки!
   } catch (error) {
     console.error('API PRODUCTS POST ERROR:', error);
     return NextResponse.json({ error: 'Ошибка сервера' }, { status: 500 });
